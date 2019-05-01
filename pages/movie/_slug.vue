@@ -1,6 +1,7 @@
 <template>
   <div>
     <no-ssr>
+      <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
       <video-player  class="video-player-box vjs-hd"
         ref="videoPlayer"
         :options="playerOptions"
@@ -27,6 +28,7 @@
   export default {
     data() {
       return {
+        play: false,
         playerOptions: {
           width: '1200px',
           height: '700px',
@@ -53,10 +55,11 @@
     methods: {
       // listen event
       onPlayerPlay(player) {
+        this.play = true
         // console.log('player play!', player)
       },
       onPlayerPause(player) {
-        // console.log('player pause!', player)
+        this.play = false
       },
       onPlayerEnded(player) {
         // console.log('player ended!', player)
@@ -65,7 +68,7 @@
         // console.log('player Loadeddata!', player)
       },
       onPlayerWaiting(player) {
-        // console.log('player Waiting!', player)
+
       },
       onPlayerPlaying(player) {
         // console.log('player Playing!', player)
@@ -98,5 +101,17 @@
     left: 50% !important;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+  }
+  .back {
+    cursor: pointer;
+  }
+  .back img{
+    max-width: 100%;
+    position: absolute;
+    z-index: 1;
+    width: 3em;
+    height: auto;
+    top: 3em;
+    left: 3em;
   }
 </style>
