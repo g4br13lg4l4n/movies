@@ -39,8 +39,6 @@
     },
     async asyncData ({ params, store }) {
       let options = {
-          width: '1420px',
-          height: '700px',
           muted: false,
           language: 'es',
           playbackRates: [0.7, 1.0, 1.5, 2.0],
@@ -101,6 +99,10 @@
     left: 50% !important;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+  }
+  .video-player-box > div {
+    width: 100vw;
+    height: 100vh;
   }
   .back {
     cursor: pointer;
