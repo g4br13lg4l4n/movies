@@ -2,33 +2,19 @@
   <b-tabs position="is-left" class="tabs-nav" v-model="activeTab">
     <b-tab-item label="Home">
       <div class="columns is-mobile is-multiline">
+
         <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-1"
-          points="8.1">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-2"
-          points="9.7">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-3"
-          points="8.5">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-4"
-          points="7.1">
+          v-for="(item, index) in movies"
+          v-bind:item="item"
+          v-bind:index="index"
+          v-bind:key="item.id"
+          :title="item.title"
+          :categories="item.category"
+          :image="item.poster"
+          :slug="item.slug"
+          :url="item.url"
+          :tags="item.tags"
+          :score="item.score">
         </card>
       </div>
     </b-tab-item>
@@ -36,65 +22,34 @@
     <b-tab-item label="Peliculas ">
       <div class="columns is-mobile is-multiline">
         <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-1"
-          points="8.1">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-2"
-          points="9.7">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-3"
-          points="8.5">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-4"
-          points="7.1">
+          v-for="(item, index) in movies"
+          v-bind:item="item"
+          v-bind:index="index"
+          v-bind:key="item.id"
+          :title="item.title"
+          :categories="item.category"
+          :image="item.poster"
+          :slug="item.slug"
+          :url="item.url"
+          :score="item.score">
         </card>
       </div>
 
     </b-tab-item>
+
     <b-tab-item label="Series">
       <div class="columns is-mobile is-multiline">
         <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-1"
-          points="8.1">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-2"
-          points="9.7">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-3"
-          points="8.5">
-        </card>
-        <card
-          title="Fantastic beasts and where find"
-          categories="Adventure, Fantasy, Action"
-          image="https://picsum.photos/600/800?random=1"
-          to="mi-movie-4"
-          points="7.1">
+          v-for="(item, index) in movies"
+          v-bind:item="item"
+          v-bind:index="index"
+          v-bind:key="item.id"
+          :title="item.title"
+          :categories="item.category"
+          :image="item.poster"
+          :slug="item.slug"
+          :url="item.url"
+          :score="item.score">
         </card>
       </div>
 
@@ -105,6 +60,7 @@
 <script>
 import Card from '~/components/Card'
   export default {
+    props: ['movies'],
     components: {
       Card,
     },

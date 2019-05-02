@@ -1,7 +1,7 @@
 <template>
-  <div class="column">
+  <div class="column is-3">
     <article class="card">
-      <nuxt-link :to="{ name: 'movie-slug', params: { slug: to }}">
+      <nuxt-link :to="{ name: 'movie-slug', params: { slug: slug, url: url, title: title, score: score, tags: tags }}">
         <div class="card-content">
           <div class="content poster"  :style="{ 'background-image': 'url(' + image + ')' }">
           </div>
@@ -11,10 +11,13 @@
             <div class="columns is-vertical-center">
               <div class="column is-10">
                 <h3>{{ title }}</h3>
-                <p><span>{{ categories }}</span></p>
+                <p><span v-for="(item, index) in tags"
+                    v-bind:item="item"
+                    v-bind:index="index"
+                    v-bind:key="item"> {{ item }} </span></p>
               </div>
               <div class="column is-2">
-                <span class="ranking">{{ points }}</span>
+                <span class="ranking">{{ score ? score : 0 }}</span>
               </div>
             </div>
           </div>
@@ -27,6 +30,10 @@
 <script>
 export default {
   props: {
+    url: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -39,11 +46,14 @@ export default {
       type: String,
       required: true
     },
-    to: {
+    tags: {
+      type: Array,
+    },
+    slug: {
       type: String,
       required: true
     },
-    points: {
+    score: {
       type: String,
       required: false
     }

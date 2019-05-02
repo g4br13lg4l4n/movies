@@ -1,23 +1,28 @@
 <template>
   <div>
     <Banner/>
-    <nav-tabs/>
+    <nav-tabs :movies="movies"/>
   </div>
 </template>
 
 <script>
 import Banner from '~/components/Banner'
 import NavTabs from '~/components/NavTabs'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'HomePage',
   components: {
     Banner,
     NavTabs
   },
-  async asyncData ({ $axios }) {
-    const ip = await $axios.$get('api/v1/movies')
-    console.log('IP', ip)
+  computed: {
+    ...mapGetters(['movies'])
+  },
+  async asyncData ({ store }) {
+    if(store.getters['movies'].length === 0){
+      await store.dispatch('get_movies')
+    }
   }
-
 }
 </script>

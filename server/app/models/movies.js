@@ -1,7 +1,15 @@
 const mongoose = require('mongoose')
+const slug = require('mongoose-slug-generator')
+mongoose.plugin(slug)
+
 const Schema = mongoose.Schema
 
 const Movies = new Schema({
+  slug: {
+    type: String,
+    slug: "title",
+    index: true
+  },
   title: {
     type: String,
     required: true,

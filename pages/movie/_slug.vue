@@ -32,7 +32,6 @@
         playerOptions: {
           width: '1200px',
           height: '700px',
-          // videojs options
           muted: false,
           language: 'es',
           playbackRates: [0.7, 1.0, 1.5, 2.0],
@@ -48,9 +47,6 @@
       this.playerOptions.width = window.innerWidth
       this.playerOptions.height = window.innerHeight
       //console.log('this is current player instance object', this.myVideoPlayer)
-    },
-    async asyncData ({ params }) {
-      console.log(params.slug)
     },
     methods: {
       // listen event

@@ -19,7 +19,7 @@ module.exports = router => {
       next(e)
     }
   })
-
+  // add new movie
   router.post('/movie', async (req, res, next) => {
     try {
       const movie = new movies(req.body)
