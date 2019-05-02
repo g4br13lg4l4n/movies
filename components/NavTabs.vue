@@ -14,7 +14,8 @@
           :slug="item.slug"
           :url="item.url"
           :tags="item.tags"
-          :score="item.score">
+          :score="item.score"
+          :poster="item.poster">
         </card>
       </div>
     </b-tab-item>

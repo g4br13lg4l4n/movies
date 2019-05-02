@@ -1,7 +1,7 @@
 <template>
   <div class="column is-3">
     <article class="card">
-      <nuxt-link :to="{ name: 'movie-slug', params: { slug: slug, url: url, title: title, score: score, tags: tags }}">
+      <nuxt-link :to="{ name: 'movie-slug', params: { slug: slug, url: url, title: title, score: score, tags: tags, poster: poster }}">
         <div class="card-content">
           <div class="content poster"  :style="{ 'background-image': 'url(' + image + ')' }">
           </div>
@@ -43,6 +43,10 @@ export default {
       required: true
     },
     image: {
+      type: String,
+      required: true
+    },
+    poster: {
       type: String,
       required: true
     },

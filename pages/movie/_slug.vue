@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <no-ssr>
       <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
       <video-player  class="video-player-box vjs-hd"
@@ -25,28 +26,31 @@
 </template>
 
 <script>
+
+  import { mapGetters } from 'vuex'
   export default {
     data() {
       return {
         play: false,
-        playerOptions: {
-          width: '1200px',
+      }
+    },
+    computed: {
+    ...mapGetters(['playerOptions'])
+    },
+    async asyncData ({ params, store }) {
+      let options = {
+          width: '1420px',
           height: '700px',
           muted: false,
           language: 'es',
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: "video/mp4",
-            src: "https://pgli8k.oloadcdn.net/dl/l/AGYlo-TtYQ13aFfp/Ds2WfjAMT2g/How.to.train.your.dragon.the.hidden.world.2019.1080p-dual-lat-cinecalidad.is.mp4"
+            src: params.url
           }],
-          poster: "https://picsum.photos/600/800?random=1",
-        }
+          poster: params.poster,
       }
-    },
-    mounted() {
-      this.playerOptions.width = window.innerWidth
-      this.playerOptions.height = window.innerHeight
-      //console.log('this is current player instance object', this.myVideoPlayer)
+      await store.commit('set_playerOptions', options)
     },
     methods: {
       // listen event

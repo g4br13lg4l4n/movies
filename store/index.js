@@ -4,7 +4,8 @@ import axios from 'axios'
 export const state = () => ({
   movies: [],
   users: [],
-  errors: []
+  errors: [],
+  playerOptions: {}
 })
 
 // mutations
@@ -17,6 +18,9 @@ export const mutations = {
   },
   set_errors(state, errors){
     state.errors = errors
+  },
+  set_playerOptions(state, options){
+    state.playerOptions = options
   }
 }
 
@@ -31,7 +35,10 @@ export const getters = {
   },
   errors(state) {
 		return state.errors
-	}
+  },
+  playerOptions(state) {
+    return state.playerOptions
+  }
 }
 
 // actions
