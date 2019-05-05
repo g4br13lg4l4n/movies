@@ -3,8 +3,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
 const consola = require('consola')
-const routes = require('./app/routers')
 const app = express()
+require('./app/auth')
 
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -37,13 +37,13 @@ async function start() {
   }) // imprime conectado si hay exito en la conexion
   .catch( err => console.log(err)) // imprime el error si falla la conexion
 
-
   //middleware
   app.use(cors())
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
 
   //routes
+  const routes = require('./app/routers')
   app.use('/api/v1', [routes])
 
   // Listen the server

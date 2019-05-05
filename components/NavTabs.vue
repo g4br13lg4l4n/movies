@@ -1,8 +1,7 @@
 <template>
   <b-tabs position="is-left" class="tabs-nav" v-model="activeTab">
     <b-tab-item label="Home">
-      <div class="columns is-mobile is-multiline">
-
+      <div v-if="movies.length" class="columns is-mobile is-multiline">
         <card
           v-for="(item, index) in movies"
           v-bind:item="item"
@@ -18,10 +17,10 @@
           :poster="item.poster">
         </card>
       </div>
+      <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
-
     <b-tab-item label="Peliculas ">
-      <div class="columns is-mobile is-multiline">
+      <div v-if="movies.length" class="columns is-mobile is-multiline">
         <card
           v-for="(item, index) in movies"
           v-bind:item="item"
@@ -35,11 +34,11 @@
           :score="item.score">
         </card>
       </div>
-
+      <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
 
     <b-tab-item label="Series">
-      <div class="columns is-mobile is-multiline">
+      <div v-if="movies.length" class="columns is-mobile is-multiline">
         <card
           v-for="(item, index) in movies"
           v-bind:item="item"
@@ -53,7 +52,7 @@
           :score="item.score">
         </card>
       </div>
-
+      <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
   </b-tabs>
 </template>

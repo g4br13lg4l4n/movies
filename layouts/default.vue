@@ -14,10 +14,6 @@ export default {
           icon: 'home',
           to: { name: 'index' }
         },
-        {
-          title: 'Login',
-          to: { name: 'login' }
-        }
       ]
     }
   }
