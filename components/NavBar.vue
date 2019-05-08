@@ -6,9 +6,13 @@
       <span aria-hidden="true"></span>
     </a>
     <div class="navbar-menu">
-      <ul class="navbar-end">
+      <ul class="navbar-end" v-if="!authenticated">
         <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
         <li class="navbar-item"> <a @click="isLogin = true">Login</a> </li>
+      </ul>
+      <ul v-else>
+        <li> <a> Hola </a></li>
+        <li> <a @click="exit">Salir</a></li>
       </ul>
     </div>
 
@@ -28,7 +32,20 @@ export default {
     return {
       isLogin: false
     }
-  }
+  },
+  methods: {
+    exit() {
+      this.$auth.logout()
+    },
+  },
+  beforeMount(){
+    const userFromVuex = this.$store.getters["auth/user"]
+    console.log(userFromVuex)
+    /*
+    if(userFromVuex){
+      this.username = userFromVuex.nombre
+    }*/
+  },
 }
 </script>
 

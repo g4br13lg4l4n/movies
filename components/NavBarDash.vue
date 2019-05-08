@@ -8,7 +8,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-light">
+            <a class="button is-light" @click="exit">
               Salir
             </a>
           </div>
@@ -17,3 +17,19 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    exit() {
+      this.$auth.logout()
+    },
+  },
+  fetch ({ store, redirect }) {
+    if (!store.state.authUser) {
+      return redirect('/')
+    }
+  }
+}
+</script>
+

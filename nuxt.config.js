@@ -30,7 +30,7 @@ module.exports = {
   ** Middleware router
   */
   router: {
-    //middleware: ['auth']
+    middleware: ["clearValidationErrors"]
   },
 
   /*
@@ -40,17 +40,50 @@ module.exports = {
     '~/assets/main.css'
   ],
 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            token_type: "Bearer",
+            url: "/users/auth",
+            method: "post",
+            propertyName: "token"
+          },
+          user: {
+            url: "users/me",
+            method: "get",
+            propertyName: "data"
+          },
+          logout: {
+            url: "auth/logout",
+            method: "get",
+            home: 'products'
+          }
+        },
+      }
+    },
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/dashboard'
+    }
+  },
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/axios',
+    "./plugins/mixins/user",
+    "./plugins/axios",
+    "./plugins/mixins/validation",
     { src: '~/plugins/VideoPlayer', ssr: false },
+    { src: '~/plugins/toastr', ssr: false },
   ],
 
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://localhost:3001/"
+    baseURL: "http://localhost:3001/api/v1/"
   },
 
   server: {

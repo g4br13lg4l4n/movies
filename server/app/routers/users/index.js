@@ -15,6 +15,17 @@ module.exports = router => {
       next(e)
     }
   })
+
+  //me
+  router.get('/users/me', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    try {
+      const resp = await users.find(req.query).select(['-password'])
+      res.json(resp)
+    } catch (e) {
+      next(e)
+    }
+  })
+
   router.post('/users/signup', async (req, res, next) => {
     try {
       const user = new users(req.body)
