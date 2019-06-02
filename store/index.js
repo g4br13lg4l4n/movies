@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import api from '../plugins/api'
 // state
 export const state = () => ({
   movies: [],
@@ -44,7 +43,7 @@ export const getters = {
 // actions
 export const actions = {
   async get_movies ({ commit }) {
-    const { data }  = await axios.get('http://localhost:3001/api/v1/movies')
+    const { data }  = await api.get(`movies`)
     commit('set_movies', data)
   }
 }

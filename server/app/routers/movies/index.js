@@ -1,6 +1,14 @@
 const movies = require('../../models/movies')
+const upload = require('../../controllers/spaces')
+
 
 module.exports = router => {
+  // add new movie
+  router.post('/movie', upload, async (req, res, next) => {
+    console.log(req.body)
+    res.json({body: req.body, files: req.files})
+  })
+
   // get by category
   router.get('/movies', async (req, res, next) => {
     try {
@@ -19,11 +27,9 @@ module.exports = router => {
       next(e)
     }
   })
-  // add new movie
-  router.post('/movie', async (req, res, next) => {
+  router.delete('/movies', async (req, res, next) => {
     try {
-      const movie = new movies(req.body)
-      let resp = await movie.save()
+      const resp = await movies.deleteMany(req.query)
       res.json(resp)
     } catch (e) {
       next (e)

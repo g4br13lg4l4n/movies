@@ -48,7 +48,6 @@ export default {
     },
     poster: {
       type: String,
-      required: true
     },
     tags: {
       type: Array,

@@ -37,10 +37,24 @@ async function start() {
   }) // imprime conectado si hay exito en la conexion
   .catch( err => console.log(err)) // imprime el error si falla la conexion
 
+
   //middleware
   app.use(cors())
+  app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
+  
+
+  app.use((err, req, res, next) => {
+    if(err.code === 'LIMIT_FILE_TYPES'){
+      res.status(422).json({error: "Error en tipo de imágen"})
+      return
+    }
+
+    if(err.code === 'LIMIT_FILE_SIZE'){
+      res.status(422).json({error: `Archivo demasiado grande.`})
+      return
+    }
+  })
 
   //routes
   const routes = require('./app/routers')

@@ -36,6 +36,11 @@ module.exports = router => {
     }
   })
 
+  router.get('/users/logout', async (req, res) =>{
+    req.logout()
+    res.redirect('/')
+  })
+
   router.post('/users/auth', async (req, res, next) => {
     passport.authenticate('auth', async (err, user, info) => {
       try {

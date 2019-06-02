@@ -56,7 +56,7 @@ module.exports = {
             propertyName: "data"
           },
           logout: {
-            url: "auth/logout",
+            url: "users/logout",
             method: "get",
             home: 'products'
           }
@@ -75,8 +75,9 @@ module.exports = {
   */
   plugins: [
     "./plugins/mixins/user",
-    "./plugins/axios",
     "./plugins/mixins/validation",
+    "./plugins/axios",
+    "./plugins/vue-progressbar",
     { src: '~/plugins/VideoPlayer', ssr: false },
     { src: '~/plugins/toastr', ssr: false },
   ],
