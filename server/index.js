@@ -43,6 +43,8 @@ async function start() {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   
+  //files
+  app.use(express.static('uploads'))
 
   app.use((err, req, res, next) => {
     if(err.code === 'LIMIT_FILE_TYPES'){

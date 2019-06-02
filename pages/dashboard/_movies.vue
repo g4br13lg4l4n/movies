@@ -56,10 +56,10 @@
               {{ props.row.slug }}
             </b-table-column>
             <b-table-column field="props.row.image" label="image" sortable>
-              {{ props.row.image }}
+              <img :src="'http://localhost:3001'+props.row.image" :alt="props.row.slug">
             </b-table-column>
             <b-table-column field="props.row.poster" label="poster" sortable>
-              {{ props.row.poster }}
+               <img :src="'http://localhost:3001'+props.row.poster" :alt="props.row.poster">
             </b-table-column>
             <b-table-column field="props.row.url" label="url">
               {{ props.row.url }}
@@ -86,8 +86,8 @@
             isPaginated: true,
             isPaginationSimple: false,
             defaultSortDirection: 'asc',
-            currentPage: 1,
-            perPage: 1,
+            currentPage: 20,
+            perPage: 20,
             formMovie: {
               title: 'evan@you.com',
               subtitle: 'testing',

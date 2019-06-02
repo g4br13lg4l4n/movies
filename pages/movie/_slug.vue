@@ -44,9 +44,9 @@
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: "video/mp4",
-            src: params.url
+            src: 'http://localhost:3001'+params.url
           }],
-          poster: params.poster,
+          poster: 'http://localhost:3001'+params.poster,
       }
       await store.commit('set_playerOptions', options)
     },

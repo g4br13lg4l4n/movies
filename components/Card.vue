@@ -3,7 +3,7 @@
     <article class="card">
       <nuxt-link :to="{ name: 'movie-slug', params: { slug: slug, url: url, title: title, score: score, tags: tags, poster: poster }}">
         <div class="card-content">
-          <div class="content poster"  :style="{ 'background-image': 'url(' + image + ')' }">
+          <div class="content poster"  :style="{ 'background-image': 'url(' +'http://localhost:3001'+ image + ')' }">
           </div>
         </div>
         <footer class="card-footer">
