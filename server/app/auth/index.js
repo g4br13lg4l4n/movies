@@ -18,7 +18,7 @@ passport.use('auth', new localStrategy({
       if( !validate ){
         return done(null, false, { message : 'usuario o contraseña incorrecta'});
       }
-      return done(null, user, { message : 'Logged in Successfully'});
+      return done(null, user, { message : 'Ok', user});
     } catch (error) {
       return done(error);
     }

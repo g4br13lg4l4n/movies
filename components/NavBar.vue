@@ -40,7 +40,7 @@ export default {
   },
   beforeMount(){
     const userFromVuex = this.$store.getters["auth/user"]
-    console.log(userFromVuex)
+    console.log('userFromVuex', userFromVuex)
     /*
     if(userFromVuex){
       this.username = userFromVuex.nombre

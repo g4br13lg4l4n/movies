@@ -30,7 +30,8 @@ module.exports = {
   ** Middleware router
   */
   router: {
-    middleware: ["clearValidationErrors"]
+    middleware: ["clearValidationErrors"],
+    middleware: ['auth']
   },
 
   /*
@@ -58,7 +59,7 @@ module.exports = {
           logout: {
             url: "users/logout",
             method: "get",
-            home: 'products'
+            redirect: '/'
           }
         },
       }
@@ -67,7 +68,7 @@ module.exports = {
       login: '/',
       logout: '/',
       callback: '/',
-      home: '/dashboard'
+      //home: '/'
     }
   },
   /*

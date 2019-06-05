@@ -29,8 +29,10 @@
     "nuxt": "^2.8.0",
     "nuxt-buefy": "^0.3.7",
     "passport": "^0.4.0",
+    "passport-http-bearer": "^1.0.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "passport-oauth2-client-password": "^0.1.2",
     "path": "^0.12.7",
     "vue-progressbar": "^0.7.5",
     "vue-video-player": "^5.0.2"
