@@ -65,7 +65,7 @@ module.exports = {
       }
     },
     redirect: {
-      login: '/',
+      login: '/dashboard',
       logout: '/',
       callback: '/',
       //home: '/'

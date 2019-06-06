@@ -9,7 +9,7 @@
           v-bind:key="item.id"
           :title="item.title"
           :categories="item.category"
-          :image="item.poster"
+          :image="item.image"
           :slug="item.slug"
           :url="item.url"
           :tags="item.tags"
@@ -28,7 +28,8 @@
           v-bind:key="item.id"
           :title="item.title"
           :categories="item.category"
-          :image="item.poster"
+          :image="item.image"
+          :poster="item.poster"
           :slug="item.slug"
           :url="item.url"
           :score="item.score">
@@ -46,7 +47,8 @@
           v-bind:key="item.id"
           :title="item.title"
           :categories="item.category"
-          :image="item.poster"
+          :image="item.image"
+          :poster="item.poster"
           :slug="item.slug"
           :url="item.url"
           :score="item.score">

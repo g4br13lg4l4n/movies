@@ -38,6 +38,7 @@
     ...mapGetters(['playerOptions'])
     },
     async asyncData ({ params, store }) {
+      console.log(params)
       let options = {
           muted: false,
           language: 'es',
@@ -46,7 +47,7 @@
             type: "video/mp4",
             src: 'http://localhost:3001'+params.url
           }],
-          poster: 'http://localhost:3001'+params.poster,
+          poster: 'http://localhost:3001'+params.image,
       }
       await store.commit('set_playerOptions', options)
     },

@@ -32,7 +32,9 @@ export default {
   middleware: ['auth'],
   data() {
     return {
-      form: {}
+      form: {
+        email: 'dragonite_98@hotmail.com'
+      }
     }
   },
   methods: {

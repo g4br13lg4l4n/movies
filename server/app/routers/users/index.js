@@ -48,8 +48,8 @@ module.exports = router => {
         req.login(user, { session : false }, async (error) => {
           if( error ) return next(error)
           const body = { _id : user._id, email : user.email, name: user.name }
-          const token = jwt.sign({ user : body }, 'kysCm1KDTILTJS0sWz0gcI7Me6NryYNq',  { expiresIn: '10h' })
-          return res.json({ token, email: user.email, name: user.name })
+          const token = jwt.sign({ user: body }, 'kysCm1KDTILTJS0sWz0gcI7Me6NryYNq',  { expiresIn: '10h' })
+          return res.json({ token, data: body })
         })
       } catch (error) {
         return next(error);

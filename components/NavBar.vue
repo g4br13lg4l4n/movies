@@ -10,12 +10,11 @@
         <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
         <li class="navbar-item"> <a @click="isLogin = true">Login</a> </li>
       </ul>
-      <ul v-else>
-        <li> <a> Hola </a></li>
-        <li> <a @click="exit">Salir</a></li>
+      <ul class="navbar-end" v-else>
+        <li class="navbar-item has-text-white-bis">Hola {{ user.name }}</li>
+        <li class="navbar-item"> <a @click="exit">Salir</a></li>
       </ul>
     </div>
-
     <b-modal :active.sync="isLogin" has-modal-card>
         <form-login/>
     </b-modal>
@@ -24,6 +23,7 @@
 
 <script>
 import FormLogin from '~/components/FormLogin'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     FormLogin
@@ -38,13 +38,8 @@ export default {
       this.$auth.logout()
     },
   },
-  beforeMount(){
-    const userFromVuex = this.$store.getters["auth/user"]
-    console.log('userFromVuex', userFromVuex)
-    /*
-    if(userFromVuex){
-      this.username = userFromVuex.nombre
-    }*/
+  computed: {
+    ...mapGetters(['auth/user'])
   },
 }
 </script>

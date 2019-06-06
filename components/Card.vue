@@ -1,9 +1,9 @@
 <template>
   <div class="column is-3">
     <article class="card">
-      <nuxt-link :to="{ name: 'movie-slug', params: { slug: slug, url: url, title: title, score: score, tags: tags, poster: poster }}">
+      <nuxt-link :to="{ name: 'movie-slug', params: { slug, url, title, score, tags, poster, image }}">
         <div class="card-content">
-          <div class="content poster"  :style="{ 'background-image': 'url(' +'http://localhost:3001'+ image + ')' }">
+          <div class="content poster"  :style="{ 'background-image': 'url(' +'http://localhost:3001'+ poster + ')' }">
           </div>
         </div>
         <footer class="card-footer">

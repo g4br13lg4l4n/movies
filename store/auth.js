@@ -2,8 +2,7 @@ export const getters = {
 	authenticated(state) {
 		return state.loggedIn;
 	},
-
-	user(state) {
+	users(state) {
 		return state.user;
 	}
 }
