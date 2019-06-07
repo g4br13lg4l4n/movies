@@ -2,9 +2,10 @@ import api from '../plugins/api'
 // state
 export const state = () => ({
   movies: [],
-  users: [],
+  user: [],
   errors: [],
-  playerOptions: {}
+  playerOptions: {},
+  authenticated: [],
 })
 
 // mutations
@@ -12,25 +13,31 @@ export const mutations = {
   set_movies(state, movies) {
     state.movies = movies
   },
-  set_users(state, users) {
-    state.users = users
+  set_user(state, user) {
+    state.user = user
   },
   set_errors(state, errors){
     state.errors = errors
   },
   set_playerOptions(state, options){
     state.playerOptions = options
+  },
+  set_authenticated(state, options){
+    state.authenticated = options
   }
 }
 
 
 // getters
 export const getters = {
+  authenticated(state) {
+		return state.loggedIn
+  },
+	user(state) {
+		return state.user
+	},
   movies(state) {
     return state.movies
-  },
-  users(state) {
-    return state.users
   },
   errors(state) {
 		return state.errors

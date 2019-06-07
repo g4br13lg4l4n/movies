@@ -11,6 +11,7 @@ import NavTabs from '~/components/NavTabs'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 
 export default {
+  middleware: 'auth',
   name: 'HomePage',
   components: {
     Banner,

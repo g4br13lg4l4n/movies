@@ -16,6 +16,7 @@
 import AsideDash from '~/components/AsideDash'
 import NavBarDash from '~/components/NavBarDash'
 export default {
+  middleware: 'auth',
   layout: 'dashboard',
   components: {
     AsideDash,

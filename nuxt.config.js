@@ -31,7 +31,6 @@ module.exports = {
   */
   router: {
     middleware: ["clearValidationErrors"],
-    middleware: ['auth']
   },
 
   /*
@@ -42,6 +41,10 @@ module.exports = {
   ],
 
   auth: {
+    redirect: {
+      callback: '/',
+      login: '/'
+    },
     strategies: {
       local: {
         endpoints: {
@@ -63,12 +66,6 @@ module.exports = {
           }
         },
       }
-    },
-    redirect: {
-      login: '/dashboard',
-      logout: '/',
-      callback: '/',
-      //home: '/'
     }
   },
   /*

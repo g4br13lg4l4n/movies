@@ -38,7 +38,7 @@ module.exports = router => {
 
   router.get('/users/logout', async (req, res, next) => {
     req.logout()
-    res.redirect('/')
+    res.json({ status: 'OK' })
   })
 
   router.post('/users/auth', async (req, res, next) => {
