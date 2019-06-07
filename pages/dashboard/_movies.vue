@@ -109,7 +109,7 @@
     },
     methods: {
       __update() {
-        console.log(this.checkedRows)
+        //console.log(this.checkedRows)
       },
       async _delete() {
         await this.checkedRows.map( e => {
@@ -117,7 +117,7 @@
         }) 
       },
       create() {
-        console.log('create')
+        
       }
     }
   }

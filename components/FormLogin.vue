@@ -29,7 +29,6 @@
 
 <script>
 export default {
-  middleware: ['auth'],
   data() {
     return {
       form: {
@@ -43,7 +42,7 @@ export default {
         await this.$auth.loginWith('local', {
           data: this.form
         })
-        //this.$parent.close()
+
         this.$router.push('/dashboard')
       } catch (error) {
         this.$toastr('error', 'Su usuario o contraseña son incorrectos', 'Error')

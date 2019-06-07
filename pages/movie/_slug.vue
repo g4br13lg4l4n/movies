@@ -38,7 +38,6 @@
     ...mapGetters(['playerOptions'])
     },
     async asyncData ({ params, store }) {
-      console.log(params)
       let options = {
           muted: false,
           language: 'es',

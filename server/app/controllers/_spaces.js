@@ -35,7 +35,6 @@ const upload = multer({
 module.exports = router => {
   // add new movie
   router.post('/movie',  upload.fields([{ name: 'poster', maxCount: 1 }]), async (req, res, next) => {
-    console.log(req.body)
     res.json({file: req.body})
     /*
     try {
