@@ -3,7 +3,7 @@
     <article class="card">
       <nuxt-link :to="{ name: 'movie-slug', params: { slug, url, title, score, tags, poster, image }}">
         <div class="card-content">
-          <div class="content poster"  :style="{ 'background-image': 'url(' +'http://localhost:3001'+ poster + ')' }">
+          <div class="content poster"  :style="{ 'background-image': 'url(' + base_url + poster + ')' }">
           </div>
         </div>
         <footer class="card-footer">
@@ -28,7 +28,9 @@
 </template>
 
 <script>
+import { base } from '../plugins/base'
 export default {
+  mixins: [ base ],
   props: {
     url: {
       type: String,

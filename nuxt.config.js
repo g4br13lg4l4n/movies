@@ -72,6 +72,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+  //  "./plugins/base/",
     "./plugins/mixins/user",
     "./plugins/mixins/validation",
     "./plugins/axios",

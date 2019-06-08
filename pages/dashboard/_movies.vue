@@ -56,10 +56,10 @@
               {{ props.row.slug }}
             </b-table-column>
             <b-table-column field="props.row.image" label="image" sortable>
-              <img :src="'http://localhost:3001'+props.row.image" :alt="props.row.slug">
+              <img :src="base_url + props.row.image" :alt="props.row.slug">
             </b-table-column>
             <b-table-column field="props.row.poster" label="poster" sortable>
-               <img :src="'http://localhost:3001'+props.row.poster" :alt="props.row.poster">
+               <img :src="base_url + props.row.poster" :alt="props.row.poster">
             </b-table-column>
             <b-table-column field="props.row.url" label="url">
               {{ props.row.url }}
@@ -76,7 +76,9 @@
 <script>
   import FormMovie from '~/components/FormMovie'
   import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+  import { base } from '../../plugins/base'
   export default {
+    mixins: [ base ],
     components: {
       FormMovie
     },

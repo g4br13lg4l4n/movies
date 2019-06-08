@@ -1,5 +1,5 @@
 <template>
-  <section class="hero banner" :style="{'background-image': 'url('+'http://localhost:3001'+ movie.image +')'}">
+  <section class="hero banner" :style="{'background-image': 'url('+ base_url + movie.image +')'}">
     <nav-bar/>
     <div class="container-fluid">
       <h1 class="title">{{ movie.title }}</h1>
@@ -17,14 +17,16 @@
 
 <script>
 import NavBar from './NavBar'
+import { base } from '../plugins/base'
 
 export default {
+  mixins: [ base ],
   name: 'banner',
   props: ['movies'],
   computed: {
     data() {
       return {
-        params: {}
+        params: {},
       }
     },
     movie: function () {

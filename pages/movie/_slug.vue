@@ -1,33 +1,30 @@
 <template>
   <div>
+    <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
+    <video-player  class="video-player-box vjs-hd"
+      ref="videoPlayer"
+      :options="playerOptions"
+      :playsinline="true"
+      customEventName="customstatechangedeventname"
+      @play="onPlayerPlay($event)"
+      @pause="onPlayerPause($event)"
+      @ended="onPlayerEnded($event)"
+      @waiting="onPlayerWaiting($event)"
+      @playing="onPlayerPlaying($event)"
+      @loadeddata="onPlayerLoadeddata($event)"
+      @timeupdate="onPlayerTimeupdate($event)"
+      @canplay="onPlayerCanplay($event)"
+      @canplaythrough="onPlayerCanplaythrough($event)"
 
-    <no-ssr>
-      <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
-      <video-player  class="video-player-box vjs-hd"
-        ref="videoPlayer"
-        :options="playerOptions"
-        :playsinline="true"
-        customEventName="customstatechangedeventname"
-        @play="onPlayerPlay($event)"
-        @pause="onPlayerPause($event)"
-        @ended="onPlayerEnded($event)"
-        @waiting="onPlayerWaiting($event)"
-        @playing="onPlayerPlaying($event)"
-        @loadeddata="onPlayerLoadeddata($event)"
-        @timeupdate="onPlayerTimeupdate($event)"
-        @canplay="onPlayerCanplay($event)"
-        @canplaythrough="onPlayerCanplaythrough($event)"
-
-        @statechanged="playerStateChanged($event)"
-        @ready="playerReadied">
-      </video-player>
-    </no-ssr>
+      @statechanged="playerStateChanged($event)"
+      @ready="playerReadied">
+    </video-player>
   </div>
 </template>
 
 <script>
-
   import { mapGetters } from 'vuex'
+
   export default {
     data() {
       return {
@@ -38,15 +35,16 @@
     ...mapGetters(['playerOptions'])
     },
     async asyncData ({ params, store }) {
+      let base_url = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001' : 'http://206.189.169.235:3001'
       let options = {
           muted: false,
           language: 'es',
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: "video/mp4",
-            src: 'http://localhost:3001'+params.url
+            src: base_url + params.url
           }],
-          poster: 'http://localhost:3001'+params.image,
+          poster: base_url + params.image,
       }
       await store.commit('set_playerOptions', options)
     },
@@ -82,11 +80,11 @@
       },
       // or listen state event
       playerStateChanged(playerCurrentState) {
-        console.log('player current update state', playerCurrentState)
+        // console.log('player current update state', playerCurrentState)
       },
       // player is ready
       playerReadied(player) {
-        console.log('example 01: the player is readied', player)
+        // console.log('example 01: the player is readied', player)
       }
     }
   }
