@@ -88,7 +88,7 @@ module.exports = {
 
   server: {
     prod: {
-      host: 'localhost',
+      host: 'http://206.189.169.235',
       port: 3001
     },
     dev: {
@@ -99,7 +99,7 @@ module.exports = {
 
   mongo: {
     prod: {
-      host: 'localhost',
+      host: 'http://206.189.169.235',
       bd: 'movies'
     },
     dev: {
