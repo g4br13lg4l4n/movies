@@ -21,7 +21,7 @@
                 type="textarea"
                 v-model="movie.sipnosis"
                 minlength="10"
-                maxlength="100"
+                maxlength="500"
                 placeholder="Descripción de película, serie o anime">
               </b-input>
             </b-field>

@@ -25,7 +25,6 @@ export const mutations = {
   }
 }
 
-
 // getters
 export const getters = {
   authenticated(state) {
