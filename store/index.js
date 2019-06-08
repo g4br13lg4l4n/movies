@@ -1,4 +1,5 @@
 import api from '../plugins/api'
+const qs = require('qs')
 // state
 export const state = () => ({
   movies: [],
@@ -52,7 +53,14 @@ export const getters = {
 // actions
 export const actions = {
   async get_movies ({ commit }) {
-    const { data }  = await api.get(`movies`)
+    let { data }  = await api.get(`movies`)
     commit('set_movies', data)
+  },
+  async delete_movies({ commit }, params){
+    let qsParams = qs.stringify(params)
+    let { data } = await api.delete(`movies?${qsParams}`)
+    if(data.deletedCount === 1 && data.ok === 1){
+      this.dispatch('get_movies')
+    }
   }
 }

@@ -113,11 +113,8 @@
       },
       async _delete() {
         await this.checkedRows.map( e => {
-          return store.dispatch('delete_movies')
+          return this.$store.dispatch('delete_movies', e)
         }) 
-      },
-      create() {
-        
       }
     }
   }

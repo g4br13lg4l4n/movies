@@ -43,6 +43,7 @@ module.exports = router => {
   router.get('/movie/{token}')
 
   router.delete('/movies', async (req, res, next) => {
+    console.log('req.query', req.query)
     try {
       const resp = await movies.deleteMany(req.query)
       res.json(resp)
