@@ -60,6 +60,7 @@ export default {
     display: flex;
   }
   .list-categories p {
+    text-transform: uppercase;
     margin: 0 .8em;
     color: white;
     font-weight: 500;

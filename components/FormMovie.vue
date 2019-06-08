@@ -40,9 +40,9 @@
           <div class="column is-6">
             <b-field label="Tags">
               <b-select placeholder="tags" multiple v-model="movie.tags" name="category">
-                <option value="action">Acción</option>
-                <option value="adventure">Aventura</option>
-                <option value="sci-fi">Ciencia ficción</option>
+                <option value="Acción">Acción</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Ciencia ficción">Ciencia ficción</option>
               </b-select>
             </b-field>
           </div>
