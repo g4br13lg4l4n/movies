@@ -88,22 +88,22 @@ module.exports = {
 
   server: {
     prod: {
-      host: 'http://206.189.169.235',
+      host: '206.189.169.235',
       port: 3001
     },
     dev: {
-      host: 'http://206.189.169.235',
+      host: '206.189.169.235',
       port: 3001
     }
   },
 
   mongo: {
     prod: {
-      host: 'http://206.189.169.235',
+      host: '206.189.169.235',
       bd: 'movies'
     },
     dev: {
-      host: 'http://206.189.169.235',
+      host: '206.189.169.235',
       bd: 'movies'
     }
   },
