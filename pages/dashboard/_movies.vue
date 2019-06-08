@@ -7,7 +7,7 @@
       </button>
 
       <button class="button field is-success" 
-        @click="_update()"
+        @click="update()"
         :disabled="checkedRows.length !== 1">
         <b-icon icon="close"></b-icon>
         <span>Actualizar</span>
@@ -108,13 +108,15 @@
       }
     },
     methods: {
-      __update() {
+      async update() {
         //console.log(this.checkedRows)
       },
       async _delete() {
-        await this.checkedRows.map( e => {
-          return this.$store.dispatch('delete_movies', e)
-        }) 
+        await this.checkedRows.map(e => {
+          console.log('delete selected', e)
+          this.$store.dispatch('delete_movies', e)
+        })
+        this.checkedRows = [] 
       }
     }
   }

@@ -1,5 +1,6 @@
 const movies = require('../../models/movies')
 const upload = require('../../controllers/spaces')
+const fs = require('fs')
 
 
 module.exports = router => {
@@ -43,11 +44,20 @@ module.exports = router => {
   router.get('/movie/{token}')
 
   router.delete('/movies', async (req, res, next) => {
-    console.log('req.query', req.query)
     try {
-      const resp = await movies.deleteMany(req.query)
-      res.json(resp)
-    } catch (e) {
+      let filenameUrl = `./uploads${req.query.url}`
+      let filenamePoster = `./uploads${req.query.poster}`
+      let filenameImage = `./uploads${req.query.image}`
+      fs.unlinkSync(filenameUrl)
+      fs.unlinkSync(filenamePoster)
+      fs.unlinkSync(filenameImage)
+      try {
+        const resp = await movies.deleteMany(req.query)
+        res.json(resp)
+      } catch (e) {
+        next (e)
+      }
+    } catch(e) {
       next (e)
     }
   })
