@@ -27,12 +27,22 @@
             </b-field>
             
           </div>
-          <div class="column is-12">
+          <div class="column is-6">
             <b-field>
               <b-select placeholder="Categoría" icon="earth" v-model="movie.category" name="category">
                 <option value="movie">Película</option>
                 <option value="serie">Serie</option>
                 <option value="anime">Anime</option>
+              </b-select>
+            </b-field>
+          </div>
+
+          <div class="column is-6">
+            <b-field label="Tags">
+              <b-select placeholder="tags" multiple v-model="movie.tags" name="category">
+                <option value="action">Acción</option>
+                <option value="adventure">Aventura</option>
+                <option value="sci-fi">Ciencia ficción</option>
               </b-select>
             </b-field>
           </div>
@@ -123,6 +133,7 @@ export default {
         video:'',
         image: '',
         poster: '',
+        tags:[],
       }
 		}
   },
@@ -135,6 +146,7 @@ export default {
       formData.append('poster', this.movie.poster)
       formData.append('video', this.movie.video)
       formData.append('image', this.movie.image)
+      formData.append('tags', this.movie.tags)
 
       this.$Progress.start()
 			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {

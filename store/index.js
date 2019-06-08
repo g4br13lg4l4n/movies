@@ -58,7 +58,6 @@ export const actions = {
   },
   async delete_movies({ commit }, params){
     let qsParams = qs.stringify(params)
-    console.log('qsParams ---> ', qsParams)
 
     let { data } = await api.delete(`movies?${qsParams}`)
     if(data.deletedCount === 1 && data.ok === 1) {

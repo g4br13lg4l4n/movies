@@ -12,6 +12,7 @@
       </ul>
       <ul class="navbar-end" v-else>
         <li class="navbar-item has-text-white-bis">Hola {{ user.name }}</li>
+        <li class="navbar-item"><nuxt-link to="/dashboard"> Dashboard </nuxt-link></li>
         <li class="navbar-item"> <a @click="exit">Salir</a></li>
       </ul>
     </div>

@@ -113,7 +113,6 @@
       },
       async _delete() {
         await this.checkedRows.map(e => {
-          console.log('delete selected', e)
           this.$store.dispatch('delete_movies', e)
         })
         this.checkedRows = [] 
