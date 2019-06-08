@@ -1,25 +1,40 @@
 <template>
-  <section class="hero banner" style="background-image:url(https://picsum.photos/600/800?random=1)">
+  <section class="hero banner" :style="{'background-image': 'url('+'http://localhost:3001'+ movie.image +')'}">
     <nav-bar/>
     <div class="container-fluid">
-      <h1 class="title">Wrath of the titans</h1>
+      <h1 class="title">{{ movie.title }}</h1>
       <div class="list-categories">
-        <p>Fantasy</p>
-        <p>Animation</p>
-        <p>Family</p>
-        <p>Duration: 1h 52m</p>
+        <p v-for="item in movie.tags" v-bind:key="item.id" > {{ item }} </p>
       </div>
       <div class="section">
-        <a class="btn see-movie">Ver película</a>
-        <a class="btn info">Ver Información</a>
+        <nuxt-link class="btn see-movie" :to="{ name: 'movie-slug', params}">
+          Ver película
+        </nuxt-link>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import NavBar from './NavBar'
+
 export default {
-  name: 'banner'
+  name: 'banner',
+  props: ['movies'],
+  computed: {
+    data() {
+      return {
+        params: {}
+      }
+    },
+    movie: function () {
+      let last = Object.keys(this.$props.movies).length - 1
+      return this.params = {...this.$props.movies[last]}
+    }
+  },
+  components: {
+    NavBar
+  }
 }
 </script>
 
@@ -72,19 +87,6 @@ export default {
   .section {
     padding: 2rem 1.5rem;
   }
-</style>
-
-<script>
-import NavBar from './NavBar'
-
-export default {
-  components: {
-    NavBar
-  }
-}
-</script>
-
-<style scoped>
   h1 {
     text-shadow: 3px 2px 3px rgb(72, 72, 72);
   }

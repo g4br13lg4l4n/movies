@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Banner/>
+    <Banner :movies="movies"/>
     <nav-tabs :movies="movies"/>
   </div>
 </template>
