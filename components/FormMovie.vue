@@ -45,14 +45,14 @@
                   <input class="file-input" ref="poster" type="file" name="poster" accept="image/*" placeholder="imagen" @change="handlePoster">
                   <span class="file-cta">
                     <span class="file-icon">
-                      <i class="fas fa-upload"></i>
+                      <i class="mdi mdi-upload mdi-24px"></i>
                     </span>
                     <span class="file-label">
                       Poster
                     </span>
                   </span>
                   <span class="file-name">
-                    {{ poster ? poster.name : poster }}
+                    {{ movie.poster ? movie.poster.name : movie.poster }}
                   </span>
                 </label>
               </div>
@@ -66,14 +66,14 @@
                   <input class="file-input" ref="image" type="file" name="image" accept="image/*" placeholder="Imágen principal" @change="handleImage">
                   <span class="file-cta">
                     <span class="file-icon">
-                      <i class="fas fa-upload"></i>
+                      <i class="mdi mdi-upload mdi-24px"></i>
                     </span>
                     <span class="file-label">
-                      Imagen principal
+                      Imagen
                     </span>
                   </span>
                   <span class="file-name">
-                    {{ image ? image.name : image }}
+                    {{ movie.image ? movie.image.name : movie.image }}
                   </span>
                 </label>
               </div>
@@ -86,14 +86,14 @@
                   <input class="file-input" ref="video" type="file" name="video" accept="video/*" placeholder="Video" @change="handleVideo">
                   <span class="file-cta">
                     <span class="file-icon">
-                      <i class="fas fa-upload"></i>
+                      <i class="mdi mdi-upload mdi-24px"></i>
                     </span>
                     <span class="file-label">
                       Video
                     </span>
                   </span>
                   <span class="file-name">
-                    {{ video ? video.name : video }}
+                    {{ movie.video ? movie.video.name : movie.video }}
                   </span>
                 </label>
               </div>
@@ -113,34 +113,41 @@
 
 <script>
 import api from '../plugins/api'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
 	data () {
 		return {
-      video:'',
-      image: '',
-      poster: '',
 			movie: {
         title: '',
         sipnosis: '',
+        video:'',
+        image: '',
+        poster: '',
       }
 		}
-	},
+  },
 	methods: {
 		async savemovie () {
       const formData = new FormData()
-      formData.append('poster', this.poster)
-      formData.append('video', this.video)
-      formData.append('image', this.image)
       formData.append('title', this.movie.title)
       formData.append('sipnosis', this.movie.sipnosis)
       formData.append('category', this.movie.category)
+      formData.append('poster', this.movie.poster)
+      formData.append('video', this.movie.video)
+      formData.append('image', this.movie.image)
 
       this.$Progress.start()
-			await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
-          this.$Progress.set(this.progress)
+			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
+          let percent = parseInt( Math.round( ( uploadEvent.loaded * 100 ) / uploadEvent.total ) )
+          this.$Progress.set(percent)
         }
       })
+      this.$store.commit('add_movie', resp.data)
+
       this.$Progress.finish()
+      this.$parent.close()
+      this.movie = {}
+
       this.$toast.open({
 				message: `Contenido guardado`,
 				type: 'is-success',
@@ -148,14 +155,13 @@ export default {
       })
     },
     handleImage(e){
-      this.image = this.$refs.image.files[0]
+      this.movie.image = this.$refs.image.files[0]
     },
-
     handlePoster(e) {
-      this.poster = this.$refs.poster.files[0]
+      this.movie.poster = this.$refs.poster.files[0]
     },
     handleVideo(e) {
-      this.video = this.$refs.video.files[0]
+      this.movie.video = this.$refs.video.files[0]
     },
   }
 }

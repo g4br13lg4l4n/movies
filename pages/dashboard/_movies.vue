@@ -86,8 +86,8 @@
             isPaginated: true,
             isPaginationSimple: false,
             defaultSortDirection: 'asc',
-            currentPage: 20,
-            perPage: 20,
+            currentPage: 50,
+            perPage: 50,
             formMovie: {
               title: 'evan@you.com',
               subtitle: 'testing',

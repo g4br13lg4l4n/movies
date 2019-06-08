@@ -8,6 +8,11 @@ export const state = () => ({
 
 // mutations
 export const mutations = {
+  add_movie(state, movie) {
+    console.log('ehntrara')
+    state.movies.push(movie)
+    state.movies = state.movies
+  },
   set_movies(state, movies) {
     state.movies = movies
   },
