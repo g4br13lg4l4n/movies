@@ -92,7 +92,7 @@ module.exports = {
       port: 3001
     },
     dev: {
-      host: 'localhost',
+      host: '206.189.169.235',
       port: 3001
     }
   },
@@ -103,7 +103,7 @@ module.exports = {
       bd: 'movies'
     },
     dev: {
-      host: 'localhost',
+      host: '206.189.169.235',
       bd: 'movies'
     }
   },
