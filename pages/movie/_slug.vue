@@ -1,7 +1,6 @@
 <template>
   <div>
     <no-ssr>
-      {{ playerOptions }}
       <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
       <video-player  class="video-player-box vjs-hd"
         ref="videoPlayer"
