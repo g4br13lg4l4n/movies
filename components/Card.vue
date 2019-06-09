@@ -90,6 +90,11 @@ export default {
   }
   .card .card-hover:hover {
     opacity: 1;
+    -webkit-transition: opacity .35s ease-in-out;
+    -moz-transition: opacity .35s ease-in-out;
+    -ms-transition: opacity .35s ease-in-out;
+    -o-transition: opacity .35s ease-in-out;
+    transition: opacity .35s ease-in-out;
   }
   .card {
     border-radius: 8px;
