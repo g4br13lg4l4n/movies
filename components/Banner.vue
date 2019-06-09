@@ -6,7 +6,7 @@
       <div class="list-categories">
         <p v-for="item in movie.tags" v-bind:key="item.id" > {{ item }} </p>
       </div>
-      <div class="section">
+      <div class="section" v-if="movie.title">
         <nuxt-link class="btn see-movie" :to="{ name: 'movie-slug', params}">
           Ver película
         </nuxt-link>

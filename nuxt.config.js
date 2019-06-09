@@ -84,6 +84,7 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: "http://206.189.169.235:3001/api/v1/"
+    //baseURL: "lhttp://ocalhost/api/v1/"
   },
 
   server: {
