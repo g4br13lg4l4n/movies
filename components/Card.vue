@@ -9,19 +9,22 @@
         <footer class="card-footer">
           <div class="card-footer-item">
             <div class="columns is-vertical-center">
-              <div class="column is-10">
+              <div class="column is-three-quarters-mobile is-three-quarters-tablet is-four-fifths-fullhd">
                 <h3>{{ title }}</h3>
                 <p><span v-for="(item, index) in tags"
                     v-bind:item="item"
                     v-bind:index="index"
                     v-bind:key="item"> {{ item }} </span></p>
               </div>
-              <div class="column is-2">
+              <div class="column is-one-fifth-mobile is-one-fifth-tablet is-one-fifth-fullhd">
                 <span class="ranking">{{ score ? score : 0 }}</span>
               </div>
             </div>
           </div>
         </footer>
+        <div class="card-hover">
+          {{ sipnosis }}
+        </div>
       </nuxt-link>
     </article>
   </div>
@@ -32,6 +35,10 @@ import { base } from '../plugins/base'
 export default {
   mixins: [ base ],
   props: {
+    sipnosis:{
+      type: String,
+      required: true
+    },
     url: {
       type: String,
       required: true
@@ -67,8 +74,26 @@ export default {
 </script>
 
 <style>
+  .card-hover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: Helvetica;
+    font-size: 1.02em;
+    letter-spacing: .1px;
+    color: white;
+    padding: 20px;
+    opacity: 0;
+  }
+  .card .card-hover:hover {
+    opacity: 1;
+  }
   .card {
     border-radius: 8px;
+    position: relative;
   }
   .card-footer-item {
     padding: 1em 1.4em;
