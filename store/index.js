@@ -4,6 +4,7 @@ const qs = require('qs')
 export const state = () => ({
   movies: [],
   errors: [],
+  movieSelected: [],
   playerOptions: {}
 })
 
@@ -21,6 +22,9 @@ export const mutations = {
   },
   set_errors(state, errors){
     state.errors = errors
+  },
+  set_movieSelected(state, movieSelected){
+    state.movieSelected = movieSelected
   },
   set_playerOptions(state, options){
     state.playerOptions = options
@@ -44,6 +48,9 @@ export const getters = {
   errors(state) {
 		return state.errors
   },
+  movieSelected(state) {
+    return state.movieSelected
+  },
   playerOptions(state) {
     return state.playerOptions
   }
@@ -51,10 +58,16 @@ export const getters = {
 
 // actions
 export const actions = {
+  async get_movie ({ commit }, params ) {
+    let qsParams = qs.stringify(params)
+    let { data }  = await api.get(`movies?${qsParams}`)
+    commit('set_movieSelected', data)
+  },
   async get_movies ({ commit }) {
     let { data }  = await api.get(`movies`)
     commit('set_movies', data)
   },
+
   async delete_movies({ commit }, params){
     let qsParams = qs.stringify(params)
 

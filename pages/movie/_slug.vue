@@ -1,24 +1,27 @@
 <template>
   <div>
-    <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
-    <video-player  class="video-player-box vjs-hd"
-      ref="videoPlayer"
-      :options="playerOptions"
-      :playsinline="true"
-      customEventName="customstatechangedeventname"
-      @play="onPlayerPlay($event)"
-      @pause="onPlayerPause($event)"
-      @ended="onPlayerEnded($event)"
-      @waiting="onPlayerWaiting($event)"
-      @playing="onPlayerPlaying($event)"
-      @loadeddata="onPlayerLoadeddata($event)"
-      @timeupdate="onPlayerTimeupdate($event)"
-      @canplay="onPlayerCanplay($event)"
-      @canplaythrough="onPlayerCanplaythrough($event)"
+    <no-ssr>
+      {{ playerOptions }}
+      <nuxt-link class="back" to="/" v-if="!play"><img src="../../assets/back.png" alt="Regresar"></nuxt-link>
+      <video-player  class="video-player-box vjs-hd"
+        ref="videoPlayer"
+        :options="playerOptions"
+        :playsinline="true"
+        customEventName="customstatechangedeventname"
+        @play="onPlayerPlay($event)"
+        @pause="onPlayerPause($event)"
+        @ended="onPlayerEnded($event)"
+        @waiting="onPlayerWaiting($event)"
+        @playing="onPlayerPlaying($event)"
+        @loadeddata="onPlayerLoadeddata($event)"
+        @timeupdate="onPlayerTimeupdate($event)"
+        @canplay="onPlayerCanplay($event)"
+        @canplaythrough="onPlayerCanplaythrough($event)"
 
-      @statechanged="playerStateChanged($event)"
-      @ready="playerReadied">
-    </video-player>
+        @statechanged="playerStateChanged($event)"
+        @ready="playerReadied">
+      </video-player>
+    </no-ssr>
   </div>
 </template>
 
@@ -35,6 +38,12 @@
     ...mapGetters(['playerOptions'])
     },
     async asyncData ({ params, store }) {
+      await store.dispatch('get_movie', params)
+      let movie  = await store.getters['movieSelected']
+
+      let url = params.url ? params.url : movie[0].url
+      let image = params.image ? params.image : movie[0].image
+
       let base_url = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001' : 'http://206.189.169.235:3001'
       let options = {
           muted: false,
@@ -42,10 +51,11 @@
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: "video/mp4",
-            src: base_url + params.url
+            src: base_url + url
           }],
-          poster: base_url + params.image,
+          poster: base_url + image,
       }
+
       await store.commit('set_playerOptions', options)
     },
     methods: {
