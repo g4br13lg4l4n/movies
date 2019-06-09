@@ -103,7 +103,7 @@ module.exports = {
       bd: 'movies'
     },
     dev: {
-      host: '206.189.169.235',
+      host: 'localhost',
       bd: 'movies'
     }
   },
