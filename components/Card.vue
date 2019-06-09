@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-3">
+  <div class="column is-full-mobile is-one-third-tablet is-one-third-desktop is-one-third-widescreen is-one-quarter-fullhd">
     <article class="card">
       <nuxt-link :to="{ name: 'movie-slug', params: { slug, url, title, score, tags, poster, image }}">
         <div class="card-content">

@@ -19,7 +19,7 @@
       </div>
       <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
-    <b-tab-item label="Peliculas ">
+    <b-tab-item label="Peliculas">
       <div v-if="movies.length" class="columns is-mobile is-multiline">
         <card
           v-for="(item, index) in movies"
@@ -37,7 +37,7 @@
       </div>
       <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
-
+<!--
     <b-tab-item label="Series">
       <div v-if="movies.length" class="columns is-mobile is-multiline">
         <card
@@ -57,6 +57,7 @@
       <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
   </b-tabs>
+  -->
 </template>
 
 <script>
