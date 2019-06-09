@@ -109,13 +109,13 @@
               </div>
             </div>
           </div>
-
         </div>
 			</section>
 			<footer class="modal-card-foot">
 					<button class="button" type="button" @click="$parent.close()">Cerrar</button>
 					<button class="button is-info">Guardar</button>
 			</footer>
+      <b-loading :is-full-page="isFullPage" :active.sync="isLoading"></b-loading>
 		</div>
     <vue-progress-bar></vue-progress-bar>
 	</form>
@@ -134,7 +134,9 @@ export default {
         image: '',
         poster: '',
         tags:[],
-      }
+      },
+      isLoading: false,
+      isFullPage: false,
 		}
   },
 	methods: {
@@ -149,17 +151,18 @@ export default {
       formData.append('tags', this.movie.tags)
 
       this.$Progress.start()
+      this.isLoading = true
 			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
           let percent = parseInt( Math.round( ( uploadEvent.loaded * 100 ) / uploadEvent.total ) )
           this.$Progress.set(percent)
         }
       })
+      
       this.$store.commit('add_movie', resp.data)
-
       this.$Progress.finish()
       this.$parent.close()
       this.movie = {}
-
+      this.isLoading = false
       this.$toast.open({
 				message: `Contenido guardado`,
 				type: 'is-success',

@@ -31,9 +31,7 @@
 export default {
   data() {
     return {
-      form: {
-        email: 'dragonite_98@hotmail.com'
-      }
+      form: {}
     }
   },
   methods: {
