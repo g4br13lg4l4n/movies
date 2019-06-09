@@ -56,8 +56,8 @@
       </div>
       <h1 v-else class="has-text-centered is-size-4">Oh no 😢. No encontramos contenido </h1>
     </b-tab-item>
-  </b-tabs>
   -->
+  </b-tabs>
 </template>
 
 <script>
