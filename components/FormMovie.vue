@@ -41,6 +41,14 @@
             <b-field label="Tags">
               <b-select placeholder="tags" multiple v-model="movie.tags" name="category">
                 <option value="Acción">Acción</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Misterio">Misterio</option>
+                <option value="Terror">Terror</option>
+                <option value="Familiar">Familiar</option>  
+                <option value="Infantil">Infantil</option>
+                <option value="Crimen">Crimen</option> 
+                <option value="Historia">Historia</option>
                 <option value="Aventura">Aventura</option>
                 <option value="Ciencia ficción">Ciencia ficción</option>
               </b-select>
