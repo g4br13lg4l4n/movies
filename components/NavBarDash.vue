@@ -32,4 +32,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .navbar {
+    background: white !important; 
+  }
+</style>
 

@@ -63,6 +63,7 @@ export const actions = {
     let { data }  = await api.get(`movies?${qsParams}`)
     commit('set_movieSelected', data)
   },
+
   async get_movies ({ commit }) {
     let { data }  = await api.get(`movies`)
     commit('set_movies', data)
@@ -75,5 +76,13 @@ export const actions = {
     if(data.deletedCount === 1 && data.ok === 1) {
       this.dispatch('get_movies')
     }
+  },
+
+  async search_movie({ commit }, params){
+    let qsParams = qs.stringify({ title: params })
+    let { data } = await api.get(`find-movies?${qsParams}`)
+    let _data = data ? data : []
+
+    commit('set_movies', _data)
   }
 }

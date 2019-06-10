@@ -35,7 +35,7 @@ module.exports = router => {
   // find movie with like
   router.get('/find-movies', async (req, res, next) => {
     try {
-      const resp = await movies.findOne({title: { $regex: '.*' + req.query.title + '.*' }})
+      const resp = await movies.find({title: { $regex: '.*' + req.query.title + '.*' }})
       res.json(resp)
     } catch (e) {
       next(e)
