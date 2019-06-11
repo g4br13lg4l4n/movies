@@ -8,16 +8,6 @@
 
     <div class="navbar-menu">
       <ul class="navbar-end">
-        <b-field>
-          <b-input 
-            @keyup.native="enter"
-            placeholder="Buscar"
-            type="search"
-            icon="magnify"
-            class="has-background-transparent">
-          </b-input>
-        </b-field>
-
         <span class="navbar-end" v-if="!authenticated">
           <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
           <li class="navbar-item"> <a @click="isLogin = true">Login</a> </li>
@@ -28,6 +18,19 @@
           <li class="navbar-item"><nuxt-link to="/dashboard"> Dashboard </nuxt-link></li>
           <li class="navbar-item"> <a @click="exit">Salir</a></li>
         </span>
+
+        <b-field>
+          <b-input 
+            @keyup.native="searching"
+            @input="clear"
+            placeholder="Buscar"
+            v-model="inputSearch"
+            type="search"
+            icon="magnify"
+            class="has-background-transparent">
+          </b-input>
+        </b-field>
+
       </ul>
     </div>
 
@@ -46,12 +49,19 @@ export default {
   },
   data() {
     return {
-      isLogin: false
+      isLogin: false,
+      inputSearch: '',
     }
   },
   methods: {
-    async enter(e) {
-      let input = e.target.value
+    async clear(){
+      if(this.inputSearch == ''){
+        console.log('entra clear')
+        await this.$store.dispatch('get_movies')
+      }
+    },
+    async searching() {
+      let input = this.inputSearch
       if(input.length > 3){
         await this.$store.dispatch('search_movie', input)
       }
