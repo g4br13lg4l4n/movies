@@ -133,6 +133,7 @@
 import api from '../plugins/api'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
+  props: ['update'],
 	data () {
 		return {
 			movie: {
@@ -146,6 +147,11 @@ export default {
       isLoading: false,
       isFullPage: false,
 		}
+  },
+  mounted() {
+    if(this.$attrs.movie[0]) {
+      this.movie = this.$attrs.movie[0] 
+    }
   },
 	methods: {
 		async savemovie () {
@@ -161,7 +167,9 @@ export default {
       this.$Progress.start()
       this.isLoading = true
 			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
+          console.log(uploadEvent)
           let percent = parseInt( Math.round( ( uploadEvent.loaded * 100 ) / uploadEvent.total ) )
+          console.log(percent)
           this.$Progress.set(percent)
         }
       })

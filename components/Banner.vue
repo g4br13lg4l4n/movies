@@ -1,5 +1,5 @@
 <template>
-  <section class="hero banner" :style="{'background-image': 'url('+ base_url + movie.image +')'}">
+  <section class="hero banner" :style="{'background-image': 'url(' + movie.image + ')'}">
     <nav-bar/>
     <div class="container-fluid">
       <h1 class="title">{{ movie.title }}</h1>

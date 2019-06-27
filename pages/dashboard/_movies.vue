@@ -1,7 +1,8 @@
 <template>
     <div>
       <button class="button field is-info" 
-        @click="modalCreate = true">
+        @click="modalCreate = true"
+        :disabled="checkedRows.length > 0">
         <b-icon icon="upload"></b-icon>
         <span>Agregar</span>
       </button>
@@ -56,10 +57,10 @@
               {{ props.row.slug }}
             </b-table-column>
             <b-table-column field="props.row.image" label="image" sortable>
-              <img :src="base_url + props.row.image" :alt="props.row.slug">
+              <img :src="props.row.image" :alt="props.row.slug">
             </b-table-column>
             <b-table-column field="props.row.poster" label="poster" sortable>
-               <img :src="base_url + props.row.poster" :alt="props.row.poster">
+               <img :src="props.row.poster" :alt="props.row.poster">
             </b-table-column>
             <b-table-column field="props.row.url" label="url">
               {{ props.row.url }}
@@ -68,7 +69,7 @@
 
       </b-table>
       <b-modal :active.sync="modalCreate" has-modal-card>
-        <form-movie/>
+        <form-movie v-bind:movie="checkedRows"/>
       </b-modal>
     </div>
 </template>
@@ -111,7 +112,7 @@
     },
     methods: {
       async update() {
-        //console.log(this.checkedRows)
+        this.modalCreate = true
       },
       async _delete() {
         await this.checkedRows.map(e => {
