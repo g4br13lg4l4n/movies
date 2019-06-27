@@ -42,7 +42,7 @@
 
       let url = params.url ? params.url : movie[0].url
       let image = params.image ? params.image : movie[0].image
-
+      console.log('url movie --> ', url)
 
       let options = {
           muted: false,
