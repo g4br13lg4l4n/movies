@@ -123,7 +123,7 @@
 					<button class="button" type="button" @click="$parent.close()">Cerrar</button>
 					<button class="button is-info">Guardar</button>
 			</footer>
-      <b-loading :is-full-page="isFullPage" :active.sync="isLoading"></b-loading>
+      <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :canCancel="false" :can-cancel="false"> <div class="loading-icon percent"> {{ percent }} % </div>  </b-loading>
 		</div>
     <vue-progress-bar></vue-progress-bar>
 	</form>
@@ -144,6 +144,7 @@ export default {
         poster: '',
         tags:[],
       },
+      percent: 0,
       isLoading: false,
       isFullPage: false,
 		}
@@ -167,10 +168,9 @@ export default {
       this.$Progress.start()
       this.isLoading = true
 			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
-          console.log(uploadEvent)
           let percent = parseInt( Math.round( ( uploadEvent.loaded * 100 ) / uploadEvent.total ) )
-          console.log(percent)
-          this.$Progress.set(percent)
+          this.percent = percent
+          this.$Progress.set(this.percent)
         }
       })
       
@@ -197,3 +197,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  .percent {
+    position: relative;
+    font-weight: 600;
+    font-size: 1.8em;
+    color: #2196F3;
+  }
+</style>
