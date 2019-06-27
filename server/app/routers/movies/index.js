@@ -6,12 +6,13 @@ const fs = require('fs')
 module.exports = router => {
   // add new movie
   router.post('/movie', upload, async (req, res, next) => {
+
     let data = {
       ...req.body,
       tags: req.body.tags.split(','),
-      url: (req.files.video[0].path).replace('uploads',''),
-      poster: (req.files.poster[0].path).replace('uploads',''),
-      image: (req.files.image[0].path).replace('uploads','')
+      url: req.files.video[0].location,
+      poster: req.files.poster[0].location,
+      image: req.files.image[0].location
     }
     try {
       const movie = new movies(data)

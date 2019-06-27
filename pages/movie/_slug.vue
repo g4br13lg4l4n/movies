@@ -43,16 +43,16 @@
       let url = params.url ? params.url : movie[0].url
       let image = params.image ? params.image : movie[0].image
 
-      let base_url = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001' : 'http://206.189.169.235:3001'
+
       let options = {
           muted: false,
           language: 'es',
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: "video/mp4",
-            src: base_url + url
+            src: url
           }],
-          poster: base_url + image,
+          poster: image,
       }
 
       await store.commit('set_playerOptions', options)
