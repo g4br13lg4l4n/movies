@@ -12,7 +12,10 @@ const options = {
   },
   autoRevert: false,
   location: 'top',
-  inverse: false
+  inverse: false,
+  autoFinish: false
 }
+
+
 
 Vue.use(VueProgressBar, options)

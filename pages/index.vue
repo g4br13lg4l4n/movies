@@ -1,6 +1,12 @@
 <template>
   <div>
     <Banner :movies="movies"/>
+    <no-ssr>
+      <InArticleAdsense
+          data-ad-client="ca-pub-493082329174049"
+          data-ad-slot="1234567890">
+      </InArticleAdsense>
+    </no-ssr>
     <nav-tabs :movies="movies"/>
   </div>
 </template>

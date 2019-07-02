@@ -77,6 +77,7 @@ module.exports = {
     "./plugins/mixins/validation",
     "./plugins/axios",
     "./plugins/vue-progressbar",
+    { src: '~/plugins/vue-google-adsense', ssr: false },
     { src: '~/plugins/VideoPlayer', ssr: false },
     { src: '~/plugins/toastr', ssr: false },
   ],
@@ -84,7 +85,7 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: "http://206.189.169.235:3001/api/v1/"
-    //baseURL: "lhttp://ocalhost/api/v1/"
+    //baseURL: "http://localhost:3001/api/v1/"
   },
 
   server: {
@@ -93,7 +94,7 @@ module.exports = {
       port: 3001
     },
     dev: {
-      host: '206.189.169.235',
+      host: 'localhost',
       port: 3001
     }
   },

@@ -170,7 +170,7 @@ export default {
 			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
           let percent = parseInt( Math.round( ( uploadEvent.loaded * 100 ) / uploadEvent.total ) )
           this.percent = percent
-          this.$Progress.set(this.percent)
+          this.$Progress.increase(this.percent)
         }
       })
       
