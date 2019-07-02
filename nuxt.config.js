@@ -84,7 +84,7 @@ module.exports = {
 
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://digitalfilms:3001/api/v1/"
+    baseURL: "http://206.189.169.235:3001/api/v1/"
     //baseURL: "http://localhost:3001/api/v1/"
   },
 
