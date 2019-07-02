@@ -5,6 +5,6 @@ export const base = {
     }
   },
   mounted() {
-    this.base_url = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001' : 'digitalfilms.us:3001'
+    this.base_url = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001' : 'http://digitalfilms.us:3001'
   }
 }
