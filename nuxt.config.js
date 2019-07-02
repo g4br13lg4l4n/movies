@@ -90,7 +90,7 @@ module.exports = {
 
   server: {
     prod: {
-      host: 'digitalfilms',
+      host: '206.189.169.235',
       port: 3001
     },
     dev: {
