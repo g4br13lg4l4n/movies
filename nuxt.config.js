@@ -94,7 +94,7 @@ module.exports = {
       port: 3001
     },
     dev: {
-      host: '206.189.169.235',
+      host: 'localhost',
       port: 3001
     }
   },
