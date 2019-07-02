@@ -84,17 +84,17 @@ module.exports = {
 
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: "http://http://digitalfilms.us:3001/api/v1/"
+    baseURL: "//digitalfilms.us:3001/api/v1/"
     //baseURL: "http://localhost:3001/api/v1/"
   },
 
   server: {
     prod: {
-      host: 'http://digitalfilms.us',
+      host: '//digitalfilms.us',
       port: 3001
     },
     dev: {
-      host: '206.189.169.235',
+      host: '//digitalfilms.us',
       port: 3001
     }
   },
