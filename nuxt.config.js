@@ -16,7 +16,11 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'keywords', content: 'peliculas, series, gratis, anime, ver'},
       { name: 'google-site-verification', content: 'bZDigLpajW54a_b8C3uFkMeJ6dcvZz9OhAhWLXD1kw0'},
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
+      { name: 'description', content: pkg.description },
+      { name: 'og:title', property:"og:title", content: pkg.description},
+
+
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
