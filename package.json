@@ -1,7 +1,7 @@
 {
-  "name": "movies",
+  "name": "digitalfilms.us",
   "version": "1.0.0",
-  "description": "Ver peliculas y series ",
+  "description": "Ve tus peliculas y series sin anuncios y comerciales",
   "author": "Gabriel Galan",
   "private": true,
   "scripts": {
