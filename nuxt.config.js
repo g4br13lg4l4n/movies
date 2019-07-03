@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Digital Films | Peliculas y series',
     htmlAttrs: {
       lang: 'es'
     },
