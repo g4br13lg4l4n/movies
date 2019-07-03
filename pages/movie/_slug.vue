@@ -94,6 +94,15 @@
       playerReadied(player) {
         // console.log('example 01: the player is readied', player)
       }
+    },
+    head () {
+      return {
+        title: 'movie ..... ',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          { hid: 'description', name: 'description', content: 'My custom description' }
+        ]
+      }
     }
   }
 </script>
