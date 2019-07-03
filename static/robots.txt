@@ -1,7 +1,1 @@
-Disallow: /dashboard
 User-agent: *
-User-agent: Googlebot
-User-agent: Bingbot
-UserAgent: Googlebot
-UserAgent: Bingbot
-UserAgent: *
