@@ -1,3 +1,4 @@
 UserAgent: Googlebot
-Disallow: /dashboard
 UserAgent: Bingbot
+UserAgent: *
+Disallow: /dashboard
