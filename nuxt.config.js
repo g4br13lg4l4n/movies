@@ -83,7 +83,6 @@ module.exports = {
     "./plugins/mixins/validation",
     "./plugins/axios",
     "./plugins/vue-progressbar",
-    { src: '~/plugins/vue-google-adsense', ssr: false },
     { src: '~/plugins/VideoPlayer', ssr: false },
     { src: '~/plugins/toastr', ssr: false },
   ],
