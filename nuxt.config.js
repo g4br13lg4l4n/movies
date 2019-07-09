@@ -85,6 +85,7 @@ module.exports = {
     "./plugins/vue-progressbar",
     { src: '~/plugins/VideoPlayer', ssr: false },
     { src: '~/plugins/toastr', ssr: false },
+    { src: '~/plugins/paypal.js', ssr: false }
   ],
 
   axios: {

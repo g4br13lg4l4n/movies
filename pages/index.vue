@@ -1,11 +1,14 @@
 <template>
   <div>
+    <Coffe/>
     <Banner :movies="movies"/>
     <nav-tabs :movies="movies"/>
+    <Coffe/>
   </div>
 </template>
 
 <script>
+import Coffe from '~/components/Coffe'
 import Banner from '~/components/Banner'
 import NavTabs from '~/components/NavTabs'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
@@ -15,7 +18,8 @@ export default {
   name: 'HomePage',
   components: {
     Banner,
-    NavTabs
+    NavTabs,
+    Coffe
   },
   computed: {
     ...mapGetters(['movies'])
