@@ -2,13 +2,32 @@
   <section class="hero is-warning">
     <div class="hero-body is-paddingless">
       <div class="container">
-        <a class="image is-40x120" @click='isCoffe = !isCoffe' >
+        <a class="image is-40x120" @click='isCoffe = !isCoffe' v-if="!isCoffe">
           <img src="../assets/buymeacoffe.png" alt="Buy me a coffe">
         </a>
-          <no-ssr v-if="isCoffe">
+          <no-ssr v-else-if="isCoffe">
+
+            <b-input placeholder="Cantidad"
+                type="number"
+                min="20">
+            </b-input>
+
+            <b-input
+              v-model="count"
+              type="number"
+              name="count" 
+              min="20"
+            ></b-input>
+            <input 
+
+              v-model="count"
+              type="number"
+              name="count" 
+              min="20">
+
             <paypal-checkout
             env="production"
-            amount="20"
+            :amount="count"
             currency="MXN"
             locale="en_US"
             :client="paypal">
@@ -24,6 +43,7 @@
     name: 'coffe',
     data() {
       return {
+        count: 20,
         isCoffe: false,
         paypal: {
           sandbox: 'Af7KywbFngNk4YhiidXuBMIi4MYstVYBHIvjif9T27KhaDwJD3_AC99HH-n3LByUuUfdTIS-zw-_A9r_',
