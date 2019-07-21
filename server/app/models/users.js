@@ -26,7 +26,8 @@ const Users = new Schema({
     type: Boolean,
     required: false,
     default: true
-  },created : {
+  },
+  created : {
     type: Date,
     default: Date.now
   },

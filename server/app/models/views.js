@@ -12,6 +12,10 @@ const Views = new Schema({
     index: true,
     default: 'anónimo'
   },
+  created : {
+    type: Date,
+    default: Date.now
+  }
 })
 
 module.exports = mongoose.model('views', Views)

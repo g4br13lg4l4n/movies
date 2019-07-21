@@ -49,6 +49,14 @@ const Movies = new Schema({
     type: Number,
     default: 0,
     required: false
+  },
+  created : {
+    type: Date,
+    default: Date.now
+  },
+  updated : {
+    type: Date,
+    default: Date.now
   }
 })
 
