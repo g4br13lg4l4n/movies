@@ -1,16 +1,47 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-
+      <div class="is-hidden-desktop has-text-centered">
+        <a @click="clear(1)" class="title is-5 has-text-weight-bold"><h1>DigitalFilms</h1> </a>
+        <div class="columns is-mobile">
+          <div class="column is-two-thirds">
+            <b-field>
+              <b-input 
+                @keyup.native="searching"
+                @input="clear"
+                placeholder="Buscar"
+                v-model="inputSearch"
+                type="search"
+                icon="magnify"
+                class="has-background-transparent">
+              </b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-dropdown hoverable aria-role="list">
+              <button class="button is-primary is-inverted is-outlined" slot="trigger">
+                <span>Géneros</span>
+                <b-icon icon="menu-down"></b-icon>
+              </button>
+              <div class="columns">
+                <div class="column">
+                  <b-dropdown-item 
+                    @click="filterBy(item)"
+                    aria-role="listitem" 
+                    class="has-text-white"
+                    v-for="(item, index) in tags" :key="index"
+                    > {{ item }} 
+                  </b-dropdown-item>
+                </div>
+              </div>
+            </b-dropdown>
+          </div>
+        </div>
+    </div>
     <div class="navbar-menu">
       <ul class="navbar-start">
         <li class="navbar-item"><a @click="clear(1)" class="title is-5"> <strong><h1>DigitalFilms</h1></strong> </a></li>
         <li class="navbar-item"> 
-           <b-dropdown hoverable aria-role="list">
+          <b-dropdown hoverable aria-role="list">
             <button class="button is-primary is-inverted is-outlined" slot="trigger">
                 <span>Géneros</span>
                 <b-icon icon="menu-down"></b-icon>
@@ -26,7 +57,7 @@
                 </b-dropdown-item>
               </div>
             </div>
-        </b-dropdown>
+          </b-dropdown>
         </li>
         <b-field>
           <b-input 
@@ -39,9 +70,7 @@
             class="has-background-transparent">
           </b-input>
         </b-field>
-
       </ul>
-
       <ul class="navbar-end" v-if="!authenticated">
         <li class="navbar-item"><a @click="isLogin=true">Login</a></li>
       </ul>
@@ -50,7 +79,6 @@
         <li class="navbar-item"><nuxt-link to="/dashboard"> Dashboard </nuxt-link></li>
         <li class="navbar-item"><a @click="exit">Salir</a></li>
       </ul>
-      
     </div>
 
     <b-modal :active.sync="isLogin" has-modal-card>
