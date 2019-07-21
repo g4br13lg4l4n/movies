@@ -52,6 +52,7 @@ const Movies = new Schema({
   },
   created : {
     type: Date,
+    required: true,
     default: Date.now
   },
   updated : {

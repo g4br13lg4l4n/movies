@@ -12,8 +12,10 @@ const Views = new Schema({
     index: true,
     default: 'anónimo'
   },
-  created : {
+  created: {
     type: Date,
+    index: true,
+    required: true,
     default: Date.now
   }
 })
