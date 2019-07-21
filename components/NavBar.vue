@@ -8,7 +8,7 @@
 
     <div class="navbar-menu">
       <ul class="navbar-start">
-        <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
+        <li class="navbar-item"><a @click="clear(1)" class="title is-5"> <strong><h1>DigitalFilms</h1></strong> </a></li>
         <li class="navbar-item"> 
            <b-dropdown hoverable aria-role="list">
             <button class="button is-primary is-inverted is-outlined" slot="trigger">
@@ -78,8 +78,8 @@ export default {
     async filterBy(tag) {
       await this.$store.dispatch('filter_movie', { tags: tag })
     },
-    async clear(){
-      if(this.inputSearch == ''){
+    async clear(data){
+      if(this.inputSearch == '' || data === 1){
         await this.$store.dispatch('get_movies')
       }
     },
