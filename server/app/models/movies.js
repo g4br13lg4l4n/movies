@@ -44,6 +44,11 @@ const Movies = new Schema({
   image: {
     type: String,
     required: false
+  },
+  views: {
+    type: Number,
+    default: 0,
+    required: false
   }
 })
 

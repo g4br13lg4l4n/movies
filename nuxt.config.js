@@ -43,7 +43,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/main.css'
+    '~/assets/main.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 
   auth: {
@@ -83,6 +84,7 @@ module.exports = {
     "./plugins/mixins/validation",
     "./plugins/axios",
     "./plugins/vue-progressbar",
+    "./plugins/fontawesome",
     { src: '~/plugins/VideoPlayer', ssr: false },
     { src: '~/plugins/toastr', ssr: false },
     { src: '~/plugins/paypal.js', ssr: false }

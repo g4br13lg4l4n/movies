@@ -8,9 +8,28 @@
 
     <div class="navbar-menu">
       <ul class="navbar-end">
+        <li class="navbar-item"> 
+           <b-dropdown hoverable aria-role="list">
+            <button class="button is-black" slot="trigger">
+                <span>Géneros</span>
+                <b-icon icon="menu-down"></b-icon>
+            </button>
+            <div class="columns">
+              <div class="column">
+                 <b-dropdown-item 
+                  @click="filterBy(item)"
+                  aria-role="listitem" 
+                  class="has-text-white"
+                  v-for="(item, index) in tags" :key="index"
+                  > {{ item }} 
+                </b-dropdown-item>
+              </div>
+            </div>
+        </b-dropdown>
+        </li>
         <span class="navbar-end" v-if="!authenticated">
           <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
-          <li class="navbar-item"> <a @click="isLogin = true">Login</a> </li>
+          <li class="navbar-item"> <a @click="isLogin = true">Login</a></li>
         </span>
 
         <span class="navbar-end" v-else>
@@ -43,6 +62,7 @@
 <script>
 import FormLogin from '~/components/FormLogin'
 import { mapGetters } from 'vuex'
+import tags from '~/store/tags.json' 
 export default {
   components: {
     FormLogin
@@ -51,18 +71,21 @@ export default {
     return {
       isLogin: false,
       inputSearch: '',
+      tags: tags.tags
     }
   },
   methods: {
+    async filterBy(tag) {
+      await this.$store.dispatch('filter_movie', { tags: tag })
+    },
     async clear(){
       if(this.inputSearch == ''){
-        console.log('entra clear')
         await this.$store.dispatch('get_movies')
       }
     },
     async searching() {
       let input = this.inputSearch
-      if(input.length > 3){
+      if(input.length > 2){
         await this.$store.dispatch('search_movie', input)
       }
     },
@@ -90,6 +113,12 @@ export default {
   .navbar a:hover {
     background: none;
     color: #ec3f78;
+  }
+  .dropdown-content {
+    background-color: #FF0079 !important; 
+  }
+  .dropdown-content > a {
+    font-weight: 600;
   }
   .nav.navbar {
     background-color: white;

@@ -58,6 +58,21 @@ export const getters = {
 
 // actions
 export const actions = {
+  async register_view_movie({ commit }, params) {
+    await api.post(`views-movies`, params)
+  },
+
+  async register_view({ commit }, params) {
+    await api.post(`views`, params)
+  },
+
+  async filter_movie({ commit }, params) {
+    let qsParams = qs.stringify(params)
+    let { data }  = await api.get(`movies?${qsParams}`) 
+    let _data = data ? data : []
+    commit('set_movies', _data)
+  },
+
   async get_movie ({ commit }, params ) {
     let qsParams = qs.stringify(params)
     let { data }  = await api.get(`movies?${qsParams}`)

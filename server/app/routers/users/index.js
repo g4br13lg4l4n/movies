@@ -36,7 +36,7 @@ module.exports = router => {
     }
   })
 
-  router.get('/users/logout', async (req, res, next) => {
+  router.get('/users/logout', async (req, res) => {
     req.logout()
     res.json({ status: 'OK' })
   })

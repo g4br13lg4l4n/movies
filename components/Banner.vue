@@ -8,7 +8,7 @@
       </div>
       <div class="section" v-if="movie.title">
         <nuxt-link class="btn see-movie" :to="{ name: 'movie-slug', params}">
-          Ver película
+          <font-awesome-icon far icon="play" /> Ver película
         </nuxt-link>
       </div>
     </div>
@@ -78,6 +78,16 @@ export default {
     font-size: 1em;
     font-weight: 600;
     padding: .8em 1.8em;
+  }
+  .btn.see-movie:hover {
+    -webkit-box-shadow: 0px 0px 7px 4px rgba(255,0,121,0.8);
+    -moz-box-shadow: 0px 0px 7px 4px rgba(255,0,121,0.8);
+    box-shadow: 0px 0px 7px 4px rgba(255,0,121,0.8);
+    -webkit-transition: box-shadow .35s ease-in-out;
+    -moz-transition: box-shadow .35s ease-in-out;
+    -ms-transition: box-shadow .35s ease-in-out;
+    -o-transition: box-shadow .35s ease-in-out;
+    transition: box-shadow .35s ease-in-out;
   }
   .btn.info {
     background-color: transparent;

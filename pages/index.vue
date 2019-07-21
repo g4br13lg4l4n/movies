@@ -24,9 +24,11 @@ export default {
   computed: {
     ...mapGetters(['movies'])
   },
-  async asyncData ({ store }) {
+  async asyncData ({ req, store }) {
     if(store.getters['movies'].length === 0){
       await store.dispatch('get_movies')
+      const ip = req.connection.remoteAddress || req.socket.remoteAddress
+      await store.dispatch('register_view', {ip: ip})
     }
   }
 }

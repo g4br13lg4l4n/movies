@@ -16,7 +16,6 @@
         @timeupdate="onPlayerTimeupdate($event)"
         @canplay="onPlayerCanplay($event)"
         @canplaythrough="onPlayerCanplaythrough($event)"
-
         @statechanged="playerStateChanged($event)"
         @ready="playerReadied">
       </video-player>
@@ -31,10 +30,11 @@
     data() {
       return {
         play: false,
+        title: 'Movie ...'
       }
     },
     computed: {
-    ...mapGetters(['playerOptions'])
+    ...mapGetters(['playerOptions', 'movieSelected'])
     },
     async asyncData ({ params, store }) {
       await store.dispatch('get_movie', params)
@@ -53,8 +53,8 @@
           }],
           poster: image,
       }
-
       await store.commit('set_playerOptions', options)
+      await store.dispatch('register_view_movie', { _id: movie[0]._id})
     },
     methods: {
       // listen event
@@ -97,10 +97,9 @@
     },
     head () {
       return {
-        title: 'movie ..... ',
+        title: this.movieSelected[0].title ? this.movieSelected[0].title : this.title,
         meta: [
-          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-          { hid: 'description', name: 'description', content: 'My custom description' }
+          { hid: 'description', name: 'description', content: this.movieSelected[0].sipnosis }
         ]
       }
     }
