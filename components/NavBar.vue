@@ -7,10 +7,11 @@
     </a>
 
     <div class="navbar-menu">
-      <ul class="navbar-end">
+      <ul class="navbar-start">
+        <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
         <li class="navbar-item"> 
            <b-dropdown hoverable aria-role="list">
-            <button class="button is-black" slot="trigger">
+            <button class="button is-primary is-inverted is-outlined" slot="trigger">
                 <span>Géneros</span>
                 <b-icon icon="menu-down"></b-icon>
             </button>
@@ -27,17 +28,6 @@
             </div>
         </b-dropdown>
         </li>
-        <span class="navbar-end" v-if="!authenticated">
-          <li class="navbar-item"><nuxt-link to="/"> Home </nuxt-link></li>
-          <li class="navbar-item"> <a @click="isLogin = true">Login</a></li>
-        </span>
-
-        <span class="navbar-end" v-else>
-          <li class="navbar-item has-text-white-bis">Hola {{ user.name }}</li>
-          <li class="navbar-item"><nuxt-link to="/dashboard"> Dashboard </nuxt-link></li>
-          <li class="navbar-item"> <a @click="exit">Salir</a></li>
-        </span>
-
         <b-field>
           <b-input 
             @keyup.native="searching"
@@ -51,6 +41,16 @@
         </b-field>
 
       </ul>
+
+      <ul class="navbar-end" v-if="!authenticated">
+        <li class="navbar-item"><a @click="isLogin=true">Login</a></li>
+      </ul>
+      <ul class="navbar-end" v-else>
+        <li class="navbar-item has-text-white-bis">Hola {{ user.name }}</li>
+        <li class="navbar-item"><nuxt-link to="/dashboard"> Dashboard </nuxt-link></li>
+        <li class="navbar-item"><a @click="exit">Salir</a></li>
+      </ul>
+      
     </div>
 
     <b-modal :active.sync="isLogin" has-modal-card>

@@ -104,7 +104,7 @@
                   <input class="file-input" ref="video" type="file" name="video" accept="video/*" placeholder="Video" @change="handleVideo">
                   <span class="file-cta">
                     <span class="file-icon">
-                      <i class="mdi mdi-upload mdi-24px"></i>
+                      <i class="mdi mdi-upload mdi-24px"/>
                     </span>
                     <span class="file-label">
                       Video
@@ -120,12 +120,12 @@
         </div>
 			</section>
 			<footer class="modal-card-foot">
-					<button class="button" type="button" @click="$parent.close()">Cerrar</button>
-					<button class="button is-info">Guardar</button>
+        <button class="button" type="button" @click="$parent.close()">Cerrar</button>
+        <button class="button is-info">Guardar</button>
 			</footer>
       <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :canCancel="false" :can-cancel="false"> <div class="loading-icon percent"> {{ percent }} % </div>  </b-loading>
-		</div>
-    <vue-progress-bar></vue-progress-bar>
+      <progress v-if="isLoading" class="progress is-danger" :value="percent" max="100">{{percent}}%</progress>
+    </div>
 	</form>
 </template>
 
@@ -165,17 +165,14 @@ export default {
       formData.append('image', this.movie.image)
       formData.append('tags', this.movie.tags)
 
-      this.$Progress.start()
       this.isLoading = true
 			let resp = await api.post('/movie', formData, { onUploadProgress: uploadEvent => {
           let percent = parseInt( Math.round( ( uploadEvent.loaded * 100 ) / uploadEvent.total ) )
           this.percent = percent
-          this.$Progress.increase(this.percent)
         }
       })
       
       this.$store.commit('add_movie', resp.data)
-      this.$Progress.finish()
       this.$parent.close()
       this.movie = {}
       this.isLoading = false
@@ -204,5 +201,11 @@ export default {
     font-weight: 600;
     font-size: 1.8em;
     color: #2196F3;
+  }
+  progress.progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
   }
 </style>

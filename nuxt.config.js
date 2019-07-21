@@ -101,7 +101,7 @@ module.exports = {
       port: 3001
     },
     dev: {
-      host: 'digitalfilms.us',
+      host: 'localhost',
       port: 3001
     }
   },
