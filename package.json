@@ -21,6 +21,7 @@
     "aws-sdk": "^2.496.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "conekta": "^3.7.1",
     "consola": "^2.9.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",

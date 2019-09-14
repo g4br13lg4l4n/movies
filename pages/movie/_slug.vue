@@ -60,39 +60,39 @@
       // listen event
       onPlayerPlay(player) {
         this.play = true
-        // console.log('player play!', player)
+         console.log('player play!', player)
       },
       onPlayerPause(player) {
         this.play = false
       },
       onPlayerEnded(player) {
-        // console.log('player ended!', player)
+         console.log('player ended!', player)
       },
       onPlayerLoadeddata(player) {
-        // console.log('player Loadeddata!', player)
+         console.log('player Loadeddata!', player)
       },
       onPlayerWaiting(player) {
-
+          console.log('onPlayerWaiting', player)
       },
       onPlayerPlaying(player) {
-        // console.log('player Playing!', player)
+         console.log('player Playing!', player)
       },
       onPlayerTimeupdate(player) {
-        // console.log('player Timeupdate!', player.currentTime())
+         console.log('player Timeupdate!', player.currentTime())
       },
       onPlayerCanplay(player) {
-        // console.log('player Canplay!', player)
+         console.log('player Canplay!', player)
       },
       onPlayerCanplaythrough(player) {
-        // console.log('player Canplaythrough!', player)
+         console.log('player Canplaythrough!', player)
       },
       // or listen state event
       playerStateChanged(playerCurrentState) {
-        // console.log('player current update state', playerCurrentState)
+         console.log('player current update state', playerCurrentState)
       },
       // player is ready
       playerReadied(player) {
-        // console.log('example 01: the player is readied', player)
+         console.log('example 01: the player is readied', player)
       }
     },
     head () {

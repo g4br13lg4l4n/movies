@@ -58,6 +58,11 @@ export const getters = {
 
 // actions
 export const actions = {
+
+  async pay ({ commit }, params){
+    await api.post(`payments`, params)
+  },
+
   async register_view_movie({ commit }, params) {
     await api.post(`views-movies`, params)
   },

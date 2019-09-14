@@ -19,8 +19,9 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description },
       { name: 'description', content: pkg.description },
       { name: 'og:title', property:"og:title", content: pkg.description},
-
-
+    ],
+    script: [
+      { src: 'https://cdn.conekta.io/js/latest/conekta.js' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -91,17 +92,17 @@ module.exports = {
   ],
 
   axios: {
-    baseURL: "http://digitalfilms.us:3001/api/v1/"
+    baseURL: "http://localhost:3001/api/v1/"
     //baseURL: "http://localhost:3001/api/v1/"
   },
 
   server: {
     prod: {
-      host: 'digitalfilms.us',
+      host: 'localhost',
       port: 3001
     },
     dev: {
-      host: 'digitalfilms.us',
+      host: 'localhost',
       port: 3001
     }
   },

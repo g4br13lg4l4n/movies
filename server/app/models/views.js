@@ -6,6 +6,10 @@ const Views = new Schema({
     type: String,
     required: false
   },
+  data: {
+    type: JSON,
+    required: false
+  },
   user: {
     type: String,
     required: true,

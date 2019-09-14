@@ -12,7 +12,7 @@ import Coffe from '~/components/Coffe'
 import Banner from '~/components/Banner'
 import NavTabs from '~/components/NavTabs'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
-
+import axios from 'axios'
 export default {
   middleware: 'auth',
   name: 'HomePage',
@@ -27,9 +27,13 @@ export default {
   async asyncData ({ req, store }) {
     if(store.getters['movies'].length === 0){
       await store.dispatch('get_movies')
-      const ip = req.connection.remoteAddress || req.socket.remoteAddress
-      await store.dispatch('register_view', {ip: ip})
     }
+    await axios.get('http://www.geoplugin.net/json.gp')
+    .then(resp => {
+      if(resp.status === 200){
+        store.dispatch('register_view', { ip: resp.data.geoplugin_request, data: resp.data })
+      }
+    })
   }
 }
 </script>
