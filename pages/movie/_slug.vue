@@ -38,7 +38,7 @@
     },
     async asyncData ({ params, store }) {
       await store.dispatch('get_movie', params)
-      let movie  = await store.getters['movieSelected']
+      let movie = await store.getters['movieSelected']
 
       let url = params.url ? params.url : movie[0].url
       let image = params.image ? params.image : movie[0].image
